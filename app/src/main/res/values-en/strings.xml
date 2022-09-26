@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mobilprogramozás</string>
+    <string name="hello_world">Hello World</string>
+    <string name="iranyitoszam">Zip Code</string>
+    <string name="varos">City</string>
+    <string name="utca">Street</string>
+    <string name="hazszam">House Number</string>
+    <string name="szerzodes_elfogadas">I accept the terms and conditions</string>
+    <string name="kuldes">Send</string>
+</resources>

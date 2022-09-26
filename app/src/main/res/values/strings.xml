@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Mobilprogramozás</string>
+    <string name="hello_world">Szia Világ</string>
+    <string name="iranyitoszam">Irányítószám</string>
+    <string name="varos">Város</string>
+    <string name="utca">Utca</string>
+    <string name="hazszam">Házszám</string>
+    <string name="szerzodes_elfogadas">Elfogadom a szerződési feltételeket</string>
+    <string name="kuldes">Küldés</string>
+</resources>
