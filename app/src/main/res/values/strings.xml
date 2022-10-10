@@ -7,4 +7,5 @@
     <string name="hazszam">Házszám</string>
     <string name="szerzodes_elfogadas">Elfogadom a szerződési feltételeket</string>
     <string name="kuldes">Küldés</string>
+    <string name="kepGomb">Kép készítése</string>
 </resources>

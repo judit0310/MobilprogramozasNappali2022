@@ -8,4 +8,5 @@
     <string name="hazszam">House Number</string>
     <string name="szerzodes_elfogadas">I accept the terms and conditions</string>
     <string name="kuldes">Send</string>
+    <string name="kepGomb">Image capture</string>
 </resources>
