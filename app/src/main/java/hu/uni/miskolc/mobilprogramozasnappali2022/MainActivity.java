@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText utcaMezo;
     private EditText hazszamMezo;
     private ImageButton mentesGomb;
+    private Button dolgozokGomb;
 
     private String uriPath;
     private CimDAO cimDAO;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         kepGomb = findViewById(R.id.kepGomb);
         mentesGomb = findViewById(R.id.mentesGomb);
         mentesGomb.setEnabled(false);
+        dolgozokGomb = findViewById(R.id.dolgozokGomb);
 
         iranyitoszamMezo = findViewById(R.id.iranyitoszamBevitel);
         varosMezo = findViewById(R.id.varosBevitel);
@@ -223,6 +225,11 @@ public class MainActivity extends AppCompatActivity {
             kamerakep.launch(intent);
         });
 
+
+        dolgozokGomb.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, DolgozokLista.class);
+            startActivity(intent);
+        });
     }
 
     private boolean mezokKitoltve(ViewGroup layout) {
