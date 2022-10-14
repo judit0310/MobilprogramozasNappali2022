@@ -1,6 +1,10 @@
 package hu.uni.miskolc.mobilprogramozasnappali2022;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -13,22 +17,29 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import hu.uni.miskolc.mobilprogramozasnappali2022.service.DolgozoDTO;
 import hu.uni.miskolc.mobilprogramozasnappali2022.service.DolgozoService;
+import hu.uni.miskolc.mobilprogramozasnappali2022.ui.DolgozoAdapter;
+import hu.uni.miskolc.mobilprogramozasnappali2022.ui.DolgozoViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 public class DolgozokLista extends AppCompatActivity {
+
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dolgozok_lista);
+        recyclerView = findViewById(R.id.recyclerView);
     }
 
     @Override
@@ -138,6 +149,33 @@ public class DolgozokLista extends AppCompatActivity {
 
             }
         });
+
+
+        //RecyclerView létrehozása
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration =
+                new DividerItemDecoration(
+                        recyclerView.getContext(),
+                        DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
+        DolgozoViewModel vm = new ViewModelProvider(this).get(DolgozoViewModel.class);
+
+        DolgozoAdapter adapter = new DolgozoAdapter();
+        adapter.setDolgozok(new ArrayList<>());
+        recyclerView.setAdapter(adapter);
+
+        vm.getDolgozok().observe(this, dolgozok -> {
+            adapter.setDolgozok(dolgozok);
+            adapter.setListener((position, v) -> {
+                System.out.println("Hello");
+            });
+            recyclerView.setAdapter(adapter);
+        });
+
 
     }
 }
