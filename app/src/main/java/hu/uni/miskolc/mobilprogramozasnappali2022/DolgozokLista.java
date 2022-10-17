@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,7 +16,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import java.util.List;
 import hu.uni.miskolc.mobilprogramozasnappali2022.service.DolgozoDTO;
 import hu.uni.miskolc.mobilprogramozasnappali2022.service.DolgozoService;
 import hu.uni.miskolc.mobilprogramozasnappali2022.ui.DolgozoAdapter;
+import hu.uni.miskolc.mobilprogramozasnappali2022.ui.DolgozoKivalasztListener;
 import hu.uni.miskolc.mobilprogramozasnappali2022.ui.DolgozoViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -170,8 +172,23 @@ public class DolgozokLista extends AppCompatActivity {
 
         vm.getDolgozok().observe(this, dolgozok -> {
             adapter.setDolgozok(dolgozok);
-            adapter.setListener((position, v) -> {
-                System.out.println("Hello");
+            adapter.setListener(new DolgozoKivalasztListener() {
+                @Override
+                public void onDolgozoClick(int position, View v) {
+
+
+                    Intent intent = new Intent(
+                            DolgozokLista.this, DolgozoDetails.class);
+                    DolgozoDTO dolgozo = dolgozok.get(position);
+                    intent.putExtra("dolgozo",dolgozo);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onDolgozoClickDelete(int position, View v) {
+                    System.out.println("Törlendő dolgozo azonositója "+dolgozok.get(position).getId());
+                    vm.deleteDolgozo(dolgozok.get(position));
+                }
             });
             recyclerView.setAdapter(adapter);
         });

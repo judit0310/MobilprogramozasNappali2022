@@ -9,4 +9,8 @@
     <string name="kuldes">Küldés</string>
     <string name="kepGomb">Kép készítése</string>
     <string name="dolgozok">Dolgozók</string>
+    <string name="azonosito">Dolgozó Azonosító</string>
+    <string name="vezeteknev">Vezetéknév</string>
+    <string name="keresztnev">Keresztnév</string>
+    <string name="fizetes">Fizetés</string>
 </resources>

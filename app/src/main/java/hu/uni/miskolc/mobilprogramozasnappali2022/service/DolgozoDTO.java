@@ -1,6 +1,8 @@
 package hu.uni.miskolc.mobilprogramozasnappali2022.service;
 
-public class DolgozoDTO {
+import java.io.Serializable;
+
+public class DolgozoDTO implements Serializable {
 
     private int id;
     private String keresztNev;

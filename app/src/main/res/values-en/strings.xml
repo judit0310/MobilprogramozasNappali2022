@@ -10,4 +10,8 @@
     <string name="kuldes">Send</string>
     <string name="kepGomb">Image capture</string>
     <string name="dolgozok">Dolgozók</string>
+    <string name="azonosito">Employee ID</string>
+    <string name="vezeteknev">Last Name</string>
+    <string name="keresztnev">First Name</string>
+    <string name="fizetes">Salary</string>
 </resources>

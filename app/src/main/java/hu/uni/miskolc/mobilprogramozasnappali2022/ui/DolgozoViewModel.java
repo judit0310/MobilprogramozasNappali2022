@@ -28,6 +28,12 @@ public class DolgozoViewModel extends ViewModel {
         return dolgozok;
     }
 
+    public void deleteDolgozo(DolgozoDTO dolgozoDTO){
+        dolgozok.getValue().remove(dolgozoDTO);
+        dolgozok.postValue(dolgozok.getValue());
+
+        }
+
     public void loadDolgozok(){
         Retrofit retrofit = new Retrofit.Builder().
                 baseUrl("https://my-json-server.typicode.com/judit0310/dummyJsonServer/").addConverterFactory(GsonConverterFactory.create()).build();
